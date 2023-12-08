@@ -1,0 +1,959 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Open+Sans:wght@300&family=Philosopher:wght@700&display=swap');
+
+:root{
+    --size:clamp(20px,1.5vw,100px);
+    --family:"Open sans",sans-serif;
+    --font-colors:white;
+    --second-font-color:black;
+    --second-font-size:clamp(20px,1vw,100px);
+    --third-font-size:clamp(20px,0.8vw,100px);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    background-color: rgb(253, 253, 253);
+    overflow-x: hidden;
+    
+}
+/*Navigation Bar*/
+
+.header{
+    background: linear-gradient(to right, rgba(255,0,0,0),  rgba(0, 0, 0, 0.747), rgba(0, 0, 0, 0.89));
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+    height: 120px;
+    top: 0;
+    transition: all 0.2s ease-out;
+}
+header.scrolled{
+    background-color: rgb(0, 0, 0);
+    opacity: 0.98em;
+}
+.header ul{
+    margin: 20 0 0 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+    transition: all 0.2s ease-out;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.644), rgba(0, 0, 0, 0.89),rgba(0, 0, 0, 0.89));
+
+}
+header.scrolled ul{
+    background: black;
+}
+.header ul a{
+    display: block;
+    padding: 20px 0 0 0;
+    text-decoration: none;
+    font-family: 'Franklin Gothic Medium',sans-serif;
+    text-align: center;
+    color: white;  
+    transition: all 0.2s ease-out;
+}
+
+.header ul a:hover{
+    color: gold;
+    
+}
+.header .logo{
+    float: left;
+    display: block;
+}
+.header .logo img{
+    width: 110px;
+    height: 110px;
+}
+.header .menu{
+    clear: both;
+    max-height: 0;
+    transition: max-height .2s ease-out;
+}
+.header .menu-icon{
+    padding: 28px 20px;
+    position: relative;
+    float: right;
+    cursor: pointer;
+}
+.header .menu-icon .nav-icon{
+    background: white;
+    display: block;
+    height: 2px;
+    width: 18px;
+    position: relative;
+    transition: all .2s ease-out;
+}
+.header .menu-icon .nav-icon:before{
+    background: white;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: 5px;
+    transition: all .2s ease-out;
+}
+
+.header .menu-icon .nav-icon:after{
+    background: white;
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    top: -5px;
+    transition: all .2s ease-out;
+}
+
+.header .menu-btn{
+    display: none;
+}
+.header .menu-btn:checked ~ .menu{
+    max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon{
+    background: transparent;
+
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:before{
+    transform: rotate(-45deg);
+    top: 0;
+    
+}
+
+.header .menu-btn:checked ~ .menu-icon .nav-icon:after{
+    transform: rotate(45deg);
+    top: 0;
+    
+}
+@media (min-width:1200px){
+    .header li{
+        float: left;
+
+    }
+    .header ul{
+        background: transparent;
+    }
+    .header li a{
+        padding: 45px 15px;
+        font-size: clamp(10px,1.5vw,200px);
+
+        
+    }
+    .header .menu{
+        clear: none;
+        float: right;
+        max-height: none;
+    
+    }
+    .header .menu-icon{
+        display: none;
+    }
+}
+
+@media (min-width:3000px){
+    .header{
+        height: 400px;
+    }
+    .header .logo img{
+        width: 400px;
+        height: 400px;
+    }
+}
+
+                                    /*Page intros*/
+.intro_sub{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.intro_sub img{
+    width: 100%;
+    height: 60vh;
+    filter: brightness(50%);
+}
+.intro_sub h1{
+    color: white;
+    font-size: clamp(50px,8vw,500px);
+    -webkit-text-stroke: 0.2vw black;
+    position: absolute;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    top: 25%;
+    width: 100%;
+    font-family: "Philosopher", sans-serif;
+}
+.intro_sub h2{
+    color: white;
+    font-size: clamp(15px,5vw,300px);
+    -webkit-text-stroke: 0.1vw black;
+    position: absolute;
+    text-align: center;
+    top: 55%;
+    width: 100%;
+    font-family: "Courgette",cursive;
+    font-weight: bold;
+    -webkit-text-stroke: .2vw black;
+}
+
+@media (max-width:700px){
+    .intro_sub h1{
+        top: 20%;
+    }
+}
+@media (max-width:690px){
+    .intro_sub h1{
+        top: 40%;
+    }
+}
+@media (max-width:420px){
+    .intro_sub h1{
+        top: 40%;
+    }
+    .intro_sub h2{
+        top: 80%;
+    }
+}
+
+
+#form-container{
+    background: url(./pexels-alex-urezkov-16251530.webp);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.personal-details{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border-radius: 10px;
+    padding-bottom: 5%;
+}
+
+#personal-details-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.form-buttons{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+    gap: 10%;
+}
+#roomselection, #adventureselection{
+    color: #000000;
+    background-color: #ddd;
+    padding: 20px 30px;
+    font-size: clamp(20px,1.5vw,100px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+    border-radius: 15px;
+}
+
+#roomselection:hover{
+    cursor: pointer;
+    background-color: gold;
+    color: #000000;
+    text-transform: uppercase;
+}
+#adventureselection:hover{
+    cursor: pointer;
+    background-color: gold;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+
+.form-containers{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 5%;
+}
+
+#room-booking{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+#adventure-booking{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+.adventure-booking-form-container{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: black;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+#adventure-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#adventure-form h1{
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    color: white;
+    font-size: clamp(30px,1.5vw,300px);
+}
+
+#adventure-selection{
+    width: 100%;
+    font-size: clamp(10px,1vw,100px);
+    color: white;
+    font-family: var(--family);
+}
+.room-booking-form-container{
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background: black;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.current-room-booking-details{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 45%;
+    border: #000000 solid 1px;
+    height: 90vh;
+}
+.current-bookings{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: left;
+    font-weight: bold;
+    background-color: var(--second-font-color);
+    height: 90vh;
+}
+
+
+#current{
+    color: var(--font-colors);
+    padding: 5%;
+    justify-content: center;
+    text-align: justify;
+
+}
+  
+.booking-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+
+#current h1{
+    text-align: center;
+}
+
+#current p{
+    font-size: var(--size);
+    color: var(--font-colors);
+    font-family: var(--family);
+}
+
+#adv-bookingdetail{
+    color: var(--font-colors);
+    padding: 5%;
+    justify-content: center;
+    text-align: justify;
+
+}
+
+#adv-bookingdetail p{
+    font-size: var(--size);
+    color: var(--font-colors);
+    font-family: var(--family);
+
+}
+
+
+.current-adventure-bookings{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 45%;
+    border: #000000 solid 1px;
+}
+#room-bookingform{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+}
+#room-bookingform h1{
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 100%;
+    color: var(--font-colors);
+    font-size: clamp(30px, 1.5vw,100px);
+}
+
+
+
+
+.favourite-loyalty-button{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2%;
+    margin-top: 3%;
+    justify-content: center;
+}
+
+.favourite-load-button{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 2%;
+    margin-top: 3%;
+
+}
+.favourite-load-button #showFav,#advshowFav{
+   border-radius: 10px;
+   font-size: var(--size);
+   font-weight: bold;
+   padding: 1%;
+}
+
+.favourite-load-button #favourite,#favouriteicon,#advfavourite,#favouriteicon{
+    border-radius: 20px;
+}
+
+.favourite-loyalty-button #loyalty{
+    border-radius: 10px;
+    font-size: var(--size);
+    font-weight: bold;
+    padding: 1%;
+}
+
+#showFav:hover,#advshowFav:hover,#loyalty:hover{
+    background-color: gold;
+    color: #000000;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+
+#favourite:hover,#advfavourite:hover{
+    filter: invert(50);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+
+.detail-input{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 40%;
+}
+
+.room-detail-input{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5%;
+   justify-content: center;
+}
+.room-input{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 25%;
+}
+
+.roomtype{
+    width: 90%;
+}
+
+label{
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: var(--size);
+    color: var(--font-colors);
+    font-family: var(--family);
+}
+
+.extra-requirements{
+    display: flex;
+    column-gap: 1%;
+    margin-top: 3%;
+    margin-bottom: 2%;
+    justify-content: center;
+}
+.extra-requirements-checkboxes{
+    position: relative;
+    width: 20%;
+    margin: 5px;
+    float: left;
+    border: 2px solid #e4e4e4;
+    border-radius: 6px;
+    text-align: center;
+    color:var(--font-colors);
+    font-weight: 10%;
+    font-size: var(--size);
+    font-family: var(--family);
+}
+.extra-requirements-checkboxes input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+.extra-requirements-checkboxes input:checked ~ .extra-req-text{
+    background-color:#eaff00e0;
+    color: rgb(0, 0, 0);
+}
+
+.extra-req-text{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(10px,1vw,500px);
+  transition: .5s ease;
+}
+
+.book-button{
+    margin-top: 5%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+
+
+#bookrooms{
+    padding: 2%;
+    border-radius: 15px;
+    font-size: clamp(15px,1.5vw,100px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+#bookadventure{
+    padding: 2%;
+    border-radius: 15px;
+    font-size: clamp(20px,1.5vw,100px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bolder;
+}
+
+#bookrooms:hover{
+    cursor: pointer;
+    background-color: rgba(255, 217, 0, 0.877);
+    color: #000000;
+    transition: 0.5s ease-out;
+    text-transform: uppercase;
+}
+
+#bookadventure:hover{
+    cursor: pointer;
+    background-color: rgba(255, 217, 0, 0.877);
+    color: #000000;
+    transition: 0.5s ease-out;
+    text-transform: uppercase;
+}
+
+
+input,select{
+    padding: 15px 15px;
+    font-size: clamp(20px,0.5vw,200px);
+}
+
+table {
+    border: 1px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  
+  table tr {
+    background-color: rgba(255, 255, 255, 0.925);
+    border: 1px solid #000000;
+   
+  }
+  
+  table th,
+  table td {
+    padding: .625em;
+    border: 1px solid #000000;
+    font-size: var(--third-font-size);
+    font-family: var(--family);
+     background-color: rgba(255, 187, 0, 0.425);
+     font-weight: bold;
+    
+  }
+  
+  table th {
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-size: var(--second-font-size);
+    font-family: var(--family);
+    color: var(--second-font-color);
+    border: 1px solid #000000;
+    background-color: rgba(255, 187, 0, 0.425);
+  }
+  
+  @media (max-width: 800px) {
+    table {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+    
+  
+    table th, table td {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    table thead{
+        width: 50%;
+    }
+    table tbody{
+        width: 50%;
+    }
+    table tr,
+    table th,
+    table td {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+   
+    }
+  }
+
+
+
+  @media(max-width:800px){
+    .detail-input{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    #room-booking{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .room-booking-form-container{
+        width: 100%;
+    }
+    .room-detail-input{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .input-field{
+        width: 80%;
+    }
+    .extra-requirements{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .room-input{
+        width: 80%;
+    }
+    .booking-details{
+        width: 100%;
+        justify-content: flex-start;
+    }
+    .current-room-booking-details{
+        padding: 5%;
+        width: 90%;
+    }
+    #adventure-booking{
+        flex-direction: column;
+
+    }
+    .adventure-booking-form-container{
+        width: 80%;
+    }
+    .current-adventure-bookings{
+        width: 80%;
+        margin-top: 5%;
+    }
+    .form-buttons{
+        flex-direction: column;
+
+    }
+    #adventureselection{
+        margin-top: 5%;
+    }
+    .favourite-loyalty-button{
+        flex-direction: column;
+        width: 80%;
+      
+    }
+    .favourite-loyalty-button #loyalty,#showFav{
+        margin-top: 5%;
+    }
+    .favourite-load-button{
+        flex-direction: column;
+        width: 80%;
+        justify-content: center;
+        margin-left: 10%;
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                /*Footer Design*/
+
+.footer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 3%;
+    background-color: rgb(0, 0, 0);
+    padding-top: 3%;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 3%;
+    font-family: "Open sans",sans-serif;
+}
+.footer-left{
+    width:40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap:5%;
+}
+.footer-logo{
+    float:left;
+    width: 30%;
+
+}
+.footer-logo img{
+    width: 100%;
+    float:left;
+}
+.footer-left-text{
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: white;
+    font-size: clamp(10px,1.5vw,100px);
+}
+.footer-left-text h1{
+    font-family: "Philosopher",sans-serif;
+    color: rgba(255, 255, 255, 0.904);
+}
+@media (max-width:800px){
+    .footer{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer-logo{
+        width:100%;
+    }
+    .footer-left-text{
+        padding-top: 10%;
+        width: 100%;
+        padding-bottom: 10%;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.footer-icons-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 20%;
+    justify-content: space-between;
+    align-items: center;
+}
+.footer-icons{
+    width:100%;
+    height:auto;
+}
+.footer-icons img{
+    width: 17%;
+    height:auto;
+}
+@media (max-width:800px){
+    .footer-icons-container{
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        
+    }
+    .footer-icons{
+        width: 40%;
+        justify-content: center;
+        align-items: center;
+       
+    }
+}
+.footer-contacts{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:30%;
+    padding-left: 5%;
+    color: white;
+    font-size: clamp(10px,1.5vw,100px);
+}
+.footer-contacts #email{
+    text-decoration: none;
+    color: white;
+}
+.footer-contacts #email:hover{
+    color: gold;
+}
+@media (max-width:800px){
+    .footer-contacts{
+        width:100%;
+        padding-left: 0;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5%;
+    }
+}
+
+
+                             
+
